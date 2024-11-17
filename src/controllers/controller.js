@@ -40,7 +40,7 @@ const addHomeLogo = asyncHandler( async (req, res) => {
 
 const addProduct = asyncHandler ( async (req, res) => {
 
-    const name = req.body;
+    const {name} = req.body;
 
     if (name.trim() === '') {
         throw new ApiError(400, "Name field is required.")
