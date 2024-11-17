@@ -16,6 +16,8 @@ const addHomeLogo = asyncHandler( async (req, res) => {
         throw new ApiError(400, "Name field is required.")
     }
 
+    console.log(req);
+
     console.log(req.files);
     
     const logoLocalPath = req.files?.logo[0]?.path;
