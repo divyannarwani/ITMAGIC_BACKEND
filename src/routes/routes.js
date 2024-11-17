@@ -8,12 +8,7 @@ const router = Router()
 
 // CREATE ROUTES
 router.route("/addHomePageLogo").post(
-    upload.fields([
-        {
-            name: "logo",
-            maxCount: 1
-        }
-    ]),
+    upload.single('logo'),
     addHomeLogo
 )
 
