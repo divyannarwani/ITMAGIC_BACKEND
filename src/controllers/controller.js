@@ -12,7 +12,7 @@ const addHomeLogo = asyncHandler( async (req, res) => {
 
     const {name} = req.body;
 
-    if (name.trim() === '') {
+    if (name.trim() == '') {
         throw new ApiError(400, "Name field is required.")
     }
 
@@ -42,7 +42,7 @@ const addProduct = asyncHandler ( async (req, res) => {
 
     const {name} = req.body;
 
-    if (name.trim() === '') {
+    if (name.trim() == "") {
         throw new ApiError(400, "Name field is required.")
     }
 
@@ -95,7 +95,7 @@ const addClient = asyncHandler ( async (req, res) => {
     const {name, category} = req.body
 
     if (
-        [name, category].some((field) => field?.trim() === "")
+        [name, category].some((field) => field?.trim() == "")
     ) {
         throw new ApiError(400, "All fields are required.")
     }
@@ -232,7 +232,7 @@ const updatePopup = asyncHandler ( async (req, res) => {
     const {name, description, price} = req.body
 
     if (
-        [name, description].some( (field) => field?.trim() === "")
+        [name, description].some( (field) => field?.trim() == "")
     ) {
         throw new ApiError(400, "All fields are required.")
     }
