@@ -7,32 +7,10 @@ const router = Router()
 
 
 // CREATE ROUTES
-router.route("/addHomePageLogo").post(
-    upload.single('logo'),
-    addHomeLogo
-)
-
-router.route("/addProduct").post(
-    upload.fields([
-        {
-            name: "image",
-            maxCount: 1
-        }
-    ]),
-    addProduct
-)
-
+router.route("/addHomePageLogo").post(upload.single('logo'), addHomeLogo)
+router.route("/addProduct").post(upload.single('image'), addProduct)
 router.route("/addClientCategory").post(addClientCat)
-
-router.route("/addClient").post(
-    upload.fields([
-        {
-            name: "image",
-            maxCount: 1
-        }
-    ]),
-    addClient
-)
+router.route("/addClient").post(upload.single('image'), addClient)
 
 // READ ROUTES
 router.route("/getHomeLogo").get(getHomeLogo)
@@ -42,15 +20,7 @@ router.route("/getClientCategory").get(getClientCategory)
 router.route("/getPopup").get(getPopup)
 
 // UPDATE ROUTES
-router.route("/editPopup").patch(
-    upload.fields([
-        {
-            name: "image",
-            maxCount: 1
-        }
-    ]),
-    updatePopup
-)
+router.route("/editPopup").patch(upload.single('image'), updatePopup)
 
 
 // DELETE ROUTES

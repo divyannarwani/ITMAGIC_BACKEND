@@ -46,7 +46,7 @@ const addProduct = asyncHandler ( async (req, res) => {
         throw new ApiError(400, "Name field is required.")
     }
 
-    const imageLocalPath = req.files?.image[0]?.path;
+    const imageLocalPath = req.file.path;
 
     if (!imageLocalPath) {
         throw new ApiError(400, "Image field is required.")
@@ -71,7 +71,6 @@ const addProduct = asyncHandler ( async (req, res) => {
 const addClientCat = asyncHandler ( async (req, res) => {
 
     const { name } = req.body
-
 
     if (name.trim() == '') {
         throw new ApiError(400, "Name field is required.")
@@ -100,7 +99,7 @@ const addClient = asyncHandler ( async (req, res) => {
         throw new ApiError(400, "All fields are required.")
     }
 
-    const imageLocalPath = req.files?.image[0]?.path
+    const imageLocalPath = req.file.path
 
     if (!imageLocalPath) {
         throw new ApiError(400, "Image is required.")
@@ -241,7 +240,7 @@ const updatePopup = asyncHandler ( async (req, res) => {
         throw new ApiError(400, "Price can not be negative.")
     }
 
-    const imageLocalPath = req.files?.image[0]?.path
+    const imageLocalPath = req.file.path
 
     if (!imageLocalPath){
         throw new ApiError(401, "Image field is required.")
