@@ -99,6 +99,15 @@ const addClient = asyncHandler ( async (req, res) => {
         throw new ApiError(400, "All fields are required.")
     }
 
+    const categoryExists = await ClientageCategory.findOne({ name: category });
+
+    if (!categoryExists) {
+        return res.status(400).json({
+            success: false,
+            message: `Category "${category}" does not exist. Please use a valid category.`,
+        });
+    }
+
     const imageLocalPath = req.file.path
 
     if (!imageLocalPath) {
@@ -113,7 +122,7 @@ const addClient = asyncHandler ( async (req, res) => {
 
     const addedClient = await Client.create({
         name: name,
-        category: category,
+        category: categoryExists._id,
         image: image.url,
     })
 
