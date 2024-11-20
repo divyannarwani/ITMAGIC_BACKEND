@@ -178,7 +178,9 @@ const getProducts = asyncHandler ( async (req, res) => {
 const getClients = asyncHandler ( async (req, res) => {
 
     try {
-        const clients = await Client.find(); // Fetch all data from the Client model
+        console.log("CALLED")
+        const clients = await Client.find().populate("category", "name -_id"); // Fetch all data from the Client model
+        console.log(clients)
         res.status(200).json({
           success: true,
           message: "Fetched all clients successfully",
